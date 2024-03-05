@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const {
-  MUX_TOKEN_ID,
-  MUX_TOKEN_SECRET,
-  MUX_API_HOST = "api.mux.com",
+  NEXT_PUBLIC_MUX_TOKEN_ID,
+  NEXT_PUBLIC_MUX_TOKEN_SECRET,
+  NEXT_PUBLIC_MUX_API_HOST = "api.mux.com",
 } = process.env;
 
 const muxOptions = {

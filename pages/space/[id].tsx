@@ -159,8 +159,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } catch (error) {}
 
   let props: Record<string, any> = {
-    heliosURL: NEXT_PUBLIC_MUX_SPACES_HELIOS_URL,
-    spaceBackendURL: NEXT_PUBLIC_MUX_SPACES_BACKEND_URL,
+    heliosURL: MUX_SPACES_HELIOS_URL,
+    spaceBackendURL: MUX_SPACES_BACKEND_URL,
     title: passthrough ? `${passthrough} | Mux Meet` : "Mux Meet Space",
   };
 

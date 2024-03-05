@@ -7,6 +7,7 @@ const fetchSpace = async (id: string) => {
   let response;
 
   try {
+    console.log(muxClient)
     response = await muxClient.get(`/video/v1/spaces/${id}`);
   } catch (error) {
     if (axios.isAxiosError(error)) {

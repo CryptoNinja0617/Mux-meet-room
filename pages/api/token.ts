@@ -2,7 +2,7 @@ import { StatusCodes } from "http-status-codes";
 import jwt from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const { MUX_SIGNING_KEY, MUX_PRIVATE_KEY } = process.env;
+const { NEXT_PUBLIC_MUX_SIGNING_KEY, NEXT_PUBLIC_MUX_PRIVATE_KEY } = process.env;
 
 type ResponseData = {
   spaceJWT: string;
@@ -11,12 +11,12 @@ type ResponseData = {
 function signJWT(spaceId: string, participantId: string): ResponseData {
   const JWT = jwt.sign(
     {
-      kid: MUX_SIGNING_KEY ?? "",
+      kid: NEXT_PUBLIC_MUX_SIGNING_KEY ?? "",
       aud: "rt",
       sub: spaceId,
       participant_id: participantId,
     },
-    Buffer.from(MUX_PRIVATE_KEY ?? "", "base64"),
+    Buffer.from(NEXT_PUBLIC_MUX_PRIVATE_KEY ?? "", "base64"),
     { algorithm: "RS256", expiresIn: "1h" }
   );
   return { spaceJWT: JWT };

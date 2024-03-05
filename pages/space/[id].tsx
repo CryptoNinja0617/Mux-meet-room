@@ -54,10 +54,10 @@ const SpacePage: NextPage<Props> = ({
 
   useEffect(() => {
     if (spaceBackendURL) {
-      (window as any).MUX_SPACES_BACKEND_URL = spaceBackendURL;
+      (window as any).NEXT_PUBLIC_MUX_SPACES_BACKEND_URL = spaceBackendURL;
     }
     if (heliosURL) {
-      (window as any).MUX_SPACES_HELIOS_URL = heliosURL;
+      (window as any).NEXT_PUBLIC_MUX_SPACES_HELIOS_URL = heliosURL;
     }
   }, [spaceBackendURL, heliosURL]);
 
@@ -159,18 +159,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } catch (error) {}
 
   let props: Record<string, any> = {
-    heliosURL: MUX_SPACES_HELIOS_URL,
-    spaceBackendURL: MUX_SPACES_BACKEND_URL,
+    heliosURL: NEXT_PUBLIC_MUX_SPACES_HELIOS_URL,
+    spaceBackendURL: NEXT_PUBLIC_MUX_SPACES_BACKEND_URL,
     title: passthrough ? `${passthrough} | Mux Meet` : "Mux Meet Space",
   };
 
   if (
-    process.env.SPACE_DURATION_SECONDS &&
+    process.env.NEXT_PUBLIC_SPACE_DURATION_SECONDS &&
     passthrough === TEMPORARY_SPACE_PASSTHROUGH &&
     createdAt
   ) {
     props.endsAt = moment(createdAt * 1000)
-      .add(process.env.SPACE_DURATION_SECONDS, "seconds")
+      .add(process.env.NEXT_PUBLIC_SPACE_DURATION_SECONDS, "seconds")
       .valueOf();
   }
 

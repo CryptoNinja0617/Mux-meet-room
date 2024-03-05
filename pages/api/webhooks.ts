@@ -15,7 +15,7 @@ export default async function handler(
 
   if (!secret) {
     console.error("NEXT_PUBLIC_WEBHOOK_SECRET not specified");
-    return res.status(StatusCodes.NEXT_PUBLIC_INTERNAL_SERVER_ERROR).end();
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).end();
   }
 
   if (
@@ -32,7 +32,7 @@ export default async function handler(
         await muxClient.delete(`/video/v1/spaces/${body.data.id}`);
         return res.status(StatusCodes.OK).end();
       } catch (error) {
-        return res.status(StatusCodes.NEXT_PUBLIC_BAD_REQUEST).end();
+        return res.status(StatusCodes.BAD_REQUEST).end();
       }
     }
 

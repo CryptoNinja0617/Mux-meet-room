@@ -7,8 +7,8 @@ const {
 } = process.env;
 
 const muxOptions = {
-  auth: { username: MUX_TOKEN_ID ?? "", password: MUX_TOKEN_SECRET ?? "" },
-  baseURL: `https://${MUX_API_HOST}`,
+  auth: { username: NEXT_PUBLIC_MUX_TOKEN_ID ?? "", password: NEXT_PUBLIC_MUX_TOKEN_SECRET ?? "" },
+  baseURL: `https://${NEXT_PUBLIC_MUX_API_HOST}`,
 };
 
 const muxClient = axios.create(muxOptions);

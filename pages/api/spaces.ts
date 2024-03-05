@@ -34,7 +34,7 @@ const createSpace = async () => {
 
   try {
     response = await muxClient.post(`/video/v1/spaces`, {
-      passthrough: NEXT_PUBLIC_TEMPORARY_SPACE_PASSTHROUGH,
+      passthrough: TEMPORARY_SPACE_PASSTHROUGH,
     });
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -52,7 +52,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const activeSpaceLimit = process.env.ACTIVE_SPACE_LIMIT;
+    const activeSpaceLimit = process.env.NEXT_PUBLIC_ACTIVE_SPACE_LIMIT;
     if (activeSpaceLimit) {
       const limit = parseInt(activeSpaceLimit, 10);
       const spaces = await fetchSpaces();

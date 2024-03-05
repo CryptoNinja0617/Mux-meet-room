@@ -34,7 +34,7 @@ const createSpace = async () => {
 
   try {
     response = await muxClient.post(`/video/v1/spaces`, {
-      passthrough: TEMPORARY_SPACE_PASSTHROUGH,
+      passthrough: NEXT_PUBLIC_TEMPORARY_SPACE_PASSTHROUGH,
     });
   } catch (error) {
     if (axios.isAxiosError(error)) {
